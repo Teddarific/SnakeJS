@@ -1,4 +1,6 @@
-// Game board settings
+/*
+ * SnakeJS Class
+ */
 class SnakeJS {
   constructor(canvas){
     // GAME OPTIONS
@@ -16,7 +18,7 @@ class SnakeJS {
     if ( this.width < 400 || this.height < 400 ){
       console.log('WARNING: SnakeJS recommends a canvas size of at least 400px by 400px');
     }
-    
+
     canvas.width = this.width;
     canvas.height = this.height;
 
@@ -74,7 +76,9 @@ class SnakeJS {
     this.gameStarted = true;
 
     this.generateFood();
-    this.positions = [[5, 5], [5, 6], [5, 7]];
+    this.positions = [[2, 2], [2, 3], [2, 4]];
+
+    this.deltaX = 1, this.deltaY = 0;
 
     this.gameInterval = setInterval(() => this.move(), this.SPEED);
   }
@@ -91,7 +95,7 @@ class SnakeJS {
     this.positions.unshift([newX, newY])
     this.positions.pop();
 
-    if ( !this.checkCollisions(newX, newY) ){
+    if ( !this.isValidPosition(newX, newY) ){
       this.gameOver();
       return;
     } else if ( this.food[0] == newX && this.food[1] == newY ){
@@ -101,7 +105,7 @@ class SnakeJS {
     this.renderSnake();
   }
 
-  checkCollisions(newX, newY){
+  isValidPosition(newX, newY){
     // check bounds
     if ( newX < 0 || newX >= this.width / this.SCALE ){
       return false;
@@ -149,6 +153,7 @@ class SnakeJS {
   gameOver(){
     this.gameStarted = false;
     clearInterval(this.gameInterval);
+
     this.ctx.fillStyle = this.BACKGROUND_COLOR;
     this.ctx.fillRect(0, 0, this.width, this.height);
 
@@ -166,7 +171,7 @@ class SnakeJS {
     do {
       foodX = Math.floor(Math.random() * this.width / this.SCALE);
       foodY = Math.floor(Math.random() * this.height / this.SCALE);
-    } while ( !this.checkCollisions(foodX, foodY) );
+    } while ( !this.isValidPosition(foodX, foodY) );
 
     this.food = [foodX, foodY];
 
