@@ -27,7 +27,9 @@ There are several options you can play around with in the constructor of the gam
 
 #### Example
 
-There's an example page included. To run it locally, in the top level directory, simply start a web server, and navigate to the file hosted on your localhost. For example,
+There's an example page included. It is currently hosted [here](http://teddyni.com/SnakeJS/example.html).
+
+Alternatively, to run it locally, in the top level directory, simply start a web server, and navigate to the file hosted on your localhost. For example,
 
 ```python -m SimpleHTTPServer 9000```
 
