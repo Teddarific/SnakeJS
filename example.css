@@ -1,10 +1,27 @@
 body {
+  align-items: center;
+  background-color: #BBBE64;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
 }
 
-#game-board {
-  background-color: 'black';
+#header {
+  color: #5B6A66;
+  font-size: 25px;
+  margin-bottom: 20px;
+}
+
+#title {
+  color: #1E332D;
+  font-size: 40px;
+}
+
+#source, #source:visited {
+  border: 2px solid #1E332D;
+  border-radius: 5px;
+  color: #5B6A66;
+  margin-top: 20px;
+  padding: 10px;
+  text-decoration: none;
 }
